@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>InstaFile</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <br>
+        <h1 class='text-center text-2xl'>
+            InstaFile - Instantly transfer file between browsers
+        </h1>
+        <br></br>
+        <div class="grid grid-cols-2 gap-4">
+            <div id="crete-room-container">
+                <!-- <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Share file</label> -->
+                <h2> Share file </h2>
+                <form>
+                    <input id="input-file" name="file" type="file" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+
+                    <!-- <input type="file" id="input-file" name="file"> -->
+                    <!-- <button type="submit" id="share-file">Share</button> -->
+                    <br>
+                    <button type="submit" id="share-file" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Share</button>
+                </form>
+            </div>
+            <div id="join-room-container">
+                <h2> Receive file </h2>
+                <form>
+                    <div class="grid gap-6 mb-6 md:grid-cols-2">
+                        <input type="text" name="room" id="room-id" placeholder="Enter room id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                        <!-- <input type="text" name="room" id="room-id" placeholder="Enter room id" required> -->
+                        <input type="text" name="passkey" id="passkey" placeholder="Enter passkey" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                        <!-- <input type="text" name="passkey" id="passkey" placeholder="Enter passkey" required> -->
+                        <button type="submit" id="join-room" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Join</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="flex bg-slate-100 p-8 justify-center" id="sender-info" style="display: none;">
+            <p class='text-center text-2xl'> Share the room id and passkey with the person you want to share the file with. </p>
+            <p class='text-left text-1xl'>
+                Room id: <span id="generated-room-id"></span> </p>
+            <p class='text-left text-1xl'>
+                Passkey: <span id="generated-passkey"></span>
+            </p>
+        </div>
+        <div id="filemetadata" class="flex bg-slate-100 p-8 justify-center" style="display: none;">
+            <p class='text-center text-2xl'> Download In-Progress </p>
+            <p class='text-left text-1xl'>
+                Downloading File: <span id="incoming-filename"></span>
+            </p>
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="client.js"></script>
+    </body>
+</html>
